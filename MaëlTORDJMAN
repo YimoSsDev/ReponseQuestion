@@ -1,0 +1,59 @@
+/*1*/
+SELECT *
+FROM `film`
+WHERE date_sortie > '1960-12-31';
+
+SELECT titre 
+FROM film 
+WHERE date_sortie < '1960-01-01'
+
+/*2*/
+
+UPDATE film
+    SET description = 'changement'
+    WHERE id = 35;
+
+/*3*/
+
+INSERT INTO film (id, titre, slug, image, prix, description, date_sortie)
+VALUES
+(39,'Dunkerque', 
+'Dunkerque', 
+'https://img-4.linternaute.com/_L_vIKJwg--KfF8tB3p8s3eHfZw=/405x540/4e008231aad845b5be37dca4db939491/ccmcms-linternaute/120453.jpg', 
+9.99,
+"En mai 1940, à Dunkerque, les forces britanniques font parties des troupes encerclées par l'armée allemande. Parmi les jeunes soldats, Tommy parvient à survivre et rejoint la plage, où de nombreux frères d'armes attendent une opération d'évacuation par les mers.", 
+'2017-07-19');
+
+/*4*/
+
+SELECT * 
+FROM commentaire INNER JOIN user ON commentaire.id_user=user.id INNER JOIN film ON commentaire.id_film=film.id WHERE film.id=43
+
+/*5*/
+
+DELETE 
+    FROM film
+    WHERE slug LIKE 't%';
+
+/*6*/
+
+SELECT DISTINCT user.*
+FROM `commentaire`, `user`
+WHERE user.id = commentaire.id_user;SELECT * FROM `user`
+
+/*7*/
+
+SELECT * FROM films_categs WHERE id_categorie = 51;
+
+/*8*/
+
+SELECT AVG(note) FROM commentaire
+
+/*9*/
+
+SELECT * FROM `film`
+    WHERE MONTH(date_sortie) = 6 
+
+/*10*/
+
+SELECT DISTINCT user.* FROM user INNER JOIN commentaire ON commentaire.id_user=user.id WHERE user.role=1
